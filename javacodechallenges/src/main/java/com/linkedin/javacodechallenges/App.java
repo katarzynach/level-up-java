@@ -14,8 +14,20 @@ public class App {
             Map.entry('Z', 10));
 
     public static int wordScoreCalculator(String word) {
-        return 0;
+        int score = 0;
+        word = word.toUpperCase();
+        char[] chars = word.toCharArray();
+        for (char c : chars) {
+            int result = letterPoints.getOrDefault(c, 0);
+            if (result != 0) {
+                score = score + result;
+            } else {
+                System.out.println("Letter skipped: " + c);
+            }
+        }
+        return score;
     }
+
 
     public static void main(String[] args) {
         System.out.println("Enter a word and we'll tell you how many " +
@@ -26,5 +38,4 @@ public class App {
                 + wordScoreCalculator(word));
         sc.close();
     }
-
 }
